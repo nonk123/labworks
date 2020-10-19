@@ -4,9 +4,9 @@
 #define DEG_TO_RAD (1. / RAD_TO_DEG)
 
 int main() {
-    p_fix_locale();
-
     float a, b, c, A_rad, B_rad, C_rad, A_deg, B_deg, C_deg, S, P;
+
+    p_fix_locale();
 
     /* FIXME: read from stdin? */
     a = 5.;
@@ -14,11 +14,11 @@ int main() {
     C_rad = 82. * DEG_TO_RAD;
 
     /* Find the third side. */
-    c = sqrt(a*a + b*b - 2*a*b * cos(C_rad));
+    c = sqrt(a*a + b*b - 2.*a*b * cos(C_rad));
 
     /* And solve normally, just like in the lecture. */
-    A_rad = acos((b*b + c*c - a*a) / (2*b*c));
-    B_rad = acos((a*a + c*c - b*b) / (2*a*c));
+    A_rad = acos((b*b + c*c - a*a) / (2.*b*c));
+    B_rad = acos((a*a + c*c - b*b) / (2.*a*c));
     /* C_rad is already known. */
 
     S = 0.5 * a*b * sin(C_rad);
