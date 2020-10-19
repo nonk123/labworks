@@ -18,8 +18,6 @@
 
 #ifdef WINDOWS
 #include <conio.h>
-#else
-#include <stdio.h>
 #endif
 
 /* Forced, too. */
@@ -38,14 +36,13 @@ void p_fix_locale() {
 }
 
 /**
- * Pause the program until Return (or any key on Windows) is pressed.
+ * Pause the program until Return is pressed.
+ *
+ * Generally not required on non-Windows systems.
  */
 void p_getch() {
-    cout << endl << "Нажмите Enter, чтобы выйти";
-
 #ifdef WINDOWS
+    cout << endl << "Нажмите Enter, чтобы выйти";
     getch();
-#else
-    getchar();
 #endif
 }

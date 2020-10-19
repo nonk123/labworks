@@ -2,33 +2,46 @@
  * №2. Сумма чисел от 1 до N.
  *
  * Сколько последовательных N чисел, начиная с 1, нужно сложить, чтобы их сумма
- * была равна 153?
+ * была равна заданному числу?
  */
 
 #include "portability.hpp"
 
 int main() {
-    unsigned int expected_sum, sum, N;
+    unsigned short int expected_sum, sum, N;
+    int tmp;
 
     p_fix_locale();
 
-    expected_sum = 153;
+    /*
+     * Accept positive input only.
+     *
+     * FIXME: entering comically large negative numbers (-99999999999999) starts
+     * an infinite loop.
+     */
+    do {
+        cout << "Введите число: "; cin >> tmp;
+    } while (tmp < 1);
+
+    expected_sum = (unsigned short int) tmp;
     sum = 0;
     N = 0;
 
+    /* This progression is calculated in a loop because N cannot be factored
+       out cleanly from the sum formula (resulting in n^2 + n = 2S). */
     while (sum < expected_sum) {
         sum += ++N;
     }
 
-    /* With e.g. =expected_sum = 152=, =sum= will remain 153.
-     *
-     * This means there /will/ be overflow, unless `expected_sum` is a sum of
-     * integers from 1 to N.
-     *
-     * No check is done for such cases, as per task explanation.
-     */
-
     cout << "Сумма чисел от 1 до " << N << " равна: " << sum << endl;
+
+    /* Notify about leftover, i.e. =expected_sum= is not a sum of integers
+       from 1 to N. */
+    if (sum > expected_sum) {
+        cout << "Что на " << sum - expected_sum << " больше введённого" << endl;
+    } else {
+        cout << "Что соответствует введённому" << endl;
+    }
 
     p_getch();
     return 0;
