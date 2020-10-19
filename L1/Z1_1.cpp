@@ -14,10 +14,12 @@ int main() {
 
     p_fix_locale();
 
-    /* FIXME: read from stdin? */
-    a = 5.;
-    b = 7.;
-    C_rad = 82. * DEG_TO_RAD;
+    /* Input loop straight from the lecture. */
+    do {
+        cout << "Введите сторону a: ";     cin >> a;
+        cout << "Введите сторону b: ";     cin >> b;
+        cout << "Введите угол С в рад.: "; cin >> C_rad;
+    } while (a <= 0. || b <= 0. || C_rad == 0.);
 
     /* Find the third side. */
     c = sqrt(a*a + b*b - 2.*a*b * cos(C_rad));
@@ -37,16 +39,22 @@ int main() {
 
     /* Pretty-print the results. */
 
-    cout << "a = " << a << endl;
-    cout << "b = " << b << endl;
-    cout << "c = " << c << endl << endl;
+    cout << endl;
 
-    cout << "A = " << A_rad << " рад или " << A_deg << " град" << endl;
-    cout << "B = " << B_rad << " рад или " << B_deg << " град" << endl;
-    cout << "C = " << C_rad << " рад или " << C_deg << " град" << endl << endl;
+    cout << "Сторона a = " << a << endl;
+    cout << "Сторона b = " << b << endl;
+    cout << "Сторона c = " << c << endl;
 
-    cout << "P = " << P << endl;
-    cout << "S = " << S << endl;
+    cout << endl;
+
+    cout << "Угол A = " << A_rad << " рад или " << A_deg << " градусов" << endl;
+    cout << "Угол B = " << B_rad << " рад или " << B_deg << " градусов" << endl;
+    cout << "Угол C = " << C_rad << " рад или " << C_deg << " градусов" << endl;
+
+    cout << endl;
+
+    cout << "Периметр P = " << P << endl;
+    cout << " Площадь S = " << S << endl;
 
     p_getch();
     return 0;
