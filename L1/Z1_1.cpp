@@ -18,8 +18,10 @@ int main() {
     do {
         cout << "Введите сторону a: ";     cin >> a;
         cout << "Введите сторону b: ";     cin >> b;
-        cout << "Введите угол С в рад.: "; cin >> C_rad;
-    } while (a <= 0. || b <= 0. || C_rad == 0.);
+        cout << "Введите угол С в градусах: "; cin >> C_deg;
+    } while (a <= 0. || b <= 0. || C_deg == 0.);
+
+    C_rad = C_deg * DEG_TO_RAD;
 
     /* Find the third side. */
     c = sqrt(a*a + b*b - 2.*a*b * cos(C_rad));
@@ -35,7 +37,7 @@ int main() {
     /* Convert to degrees because why not. */
     A_deg = A_rad * RAD_TO_DEG;
     B_deg = B_rad * RAD_TO_DEG;
-    C_deg = C_rad * RAD_TO_DEG;
+    /* C_deg is already known. */
 
     /* Pretty-print the results. */
 
