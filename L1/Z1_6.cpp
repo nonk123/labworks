@@ -24,12 +24,13 @@ int main() {
        But T, the period, cannot be negative or zero. */
     do {
         cout << "Введите период обращения спутника: "; cin >> T;
-    } while (T <= 0);
+    } while (T <= 0.);
 
-    h = powf((G * M * T*T) / (4. * M_PI*M_PI), 1. / 3) - R;
+    /* The derivation process _should_ make it to the report. */
+    h = powf((G * M * T*T) / (4. * M_PI*M_PI), 1. / 3.) - R;
 
     /* It's rotating so fast it went underground. */
-    if (h < 0)
+    if (h < 0.)
         cout << "Спутник оказался под землёй." << endl;
     else
         cout << "h = " << h / 1000. << " км" << endl;
