@@ -4,3 +4,7 @@
 
 *.out
 *.zip
+
+ltxmathml/
+*.odt
+*.odt\#

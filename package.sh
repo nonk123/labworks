@@ -26,6 +26,9 @@ rm -f "$LAB.zip"
 mkdir -p "$TMP"
 
 for task in $LAB/*; do
+    # Skip stuff that isn't solutions.
+    [[ "$task" != */Z*.cpp ]] && continue
+
     task=${task##*/}
     TASK_DIR=$TMP/${task%*.cpp}/
 
