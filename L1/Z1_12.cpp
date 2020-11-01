@@ -1,5 +1,5 @@
 /**
- * №6. Высота орбиты спутника Земли.
+ * №12. Высота орбиты спутника Земли.
  *
  * Пусть известна масса Земли и её радиус. Также известна масса спутника и
  * период его обращения вокруг Земли. Необходимо за данный период найти высоту
@@ -21,7 +21,7 @@ int main() {
     G = 6.67 * powf(10., -11.);
 
     /* Aforementioned mass is not required to solve this.
-       But T, the period, cannot be negative or zero. */
+       But, T, the period, cannot be negative or zero. */
     do {
         cout << "Введите период обращения спутника: "; cin >> T;
     } while (T <= 0.);

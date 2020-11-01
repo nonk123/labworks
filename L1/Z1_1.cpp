@@ -1,62 +1,40 @@
 /**
- * №1. Решение треугольника по двум сторонам и углу между ними.
- *
- * Необходимо решить треугольник по двум сторонам и углу между ними.
+ * №1. Вывод текста приветствия.
  */
 
 #include "portability.hpp"
 
-#define RAD_TO_DEG (180. / M_PI)
-#define DEG_TO_RAD (1. / RAD_TO_DEG)
-
 int main() {
-    float a, b, c, A_rad, B_rad, C_rad, A_deg, B_deg, C_deg, S, P;
-
     p_fix_locale();
 
-    /* Input loop straight from the lecture. */
-    do {
-        cout << "Введите сторону a: ";     cin >> a;
-        cout << "Введите сторону b: ";     cin >> b;
-        cout << "Введите угол С в градусах: "; cin >> C_deg;
-    } while (a <= 0. || b <= 0. || C_deg == 0.);
+    /* Source: https://tgstation13.org/wiki/Woody%27s_Got_Wood#WGW.2C_in_glorious.2C_copy-pastable_form */
+    cout << "One day while Andy was masturbating, Woody got wood. He could no l"
+         << "onger help himself! He watched as Andy stroked his juicy kawaii co"
+         << "ck. He approached Andy which startled him and make him pee everywh"
+         << "ere on the floor and on Woody too. Being drenched in his urine mad"
+         << "e him harder than ever! Woody: \"Andy Senpai! I'm alive and I want"
+         << " to be INSIDE OF YOU.\" Andy: \"Oh Woody Chan! I always knew you w"
+         << "ere alive! I want to stuff you up my kawaii ass!\" Woody grabbed a"
+         << " bunch of flavored lube and rubbed it all over his head Woody: \"O"
+         << "h my! It's cherry flavored lube! Cherry is my favorite! Woody then"
+         << " stuffed his head up into Andy's tight ass! The other toys around "
+         << "the room watched intently as Woody shoved his head back and forth "
+         << "into Andy's nice ass, continuously making a squishy wet noise. The"
+         << " other toys also became aroused and they all gathered around Woody"
+         << " and Andy and started to urinate all over them, and then they star"
+         << "ted to masturbate. Andy: \"Oh my goodness, Woody Chan! You are chu"
+         << "rning my insides up so well! Your nose is stimulating my prostate!"
+         << " OH YES! All the other toys became so aroused by this, that they c"
+         << "ould not help themselves anymore! They pushed Woody completely ins"
+         << "ide, and they all went inside. All of them wanted to be inside And"
+         << "y's nice round ass. Andy: \"No wait guys! My ass cannot hold this "
+         << "much! I'm getting so full! All the toys went inside of poor squirm"
+         << "ing Andy and pretty much, he was beyond full, and died from having"
+         << " his insides completely damaged. The mother came inside and found "
+         << "Andy, dead with a huge ass hemorrhage on his anus, with a HUGE bel"
+         << "ly full of toys. [full, absolute sic. Don't even ask]" << endl;
 
-    C_rad = C_deg * DEG_TO_RAD;
-
-    /* Find the third side. */
-    c = sqrt(a*a + b*b - 2.*a*b * cos(C_rad));
-
-    /* And solve normally, just like in the lecture. */
-    A_rad = acos((b*b + c*c - a*a) / (2.*b*c));
-    B_rad = acos((a*a + c*c - b*b) / (2.*a*c));
-    /* C_rad is already known. */
-
-    S = 0.5 * a*b * sin(C_rad);
-    P = a + b + c;
-
-    /* Convert to degrees because why not. */
-    A_deg = A_rad * RAD_TO_DEG;
-    B_deg = B_rad * RAD_TO_DEG;
-    /* C_deg is already known. */
-
-    /* Pretty-print the results. */
-
-    cout << endl;
-
-    cout << "Сторона a = " << a << endl;
-    cout << "Сторона b = " << b << endl;
-    cout << "Сторона c = " << c << endl;
-
-    cout << endl;
-
-    cout << "Угол A = " << A_rad << " рад или " << A_deg << " градусов" << endl;
-    cout << "Угол B = " << B_rad << " рад или " << B_deg << " градусов" << endl;
-    cout << "Угол C = " << C_rad << " рад или " << C_deg << " градусов" << endl;
-
-    cout << endl;
-
-    cout << "Периметр P = " << P << endl;
-    cout << " Площадь S = " << S << endl;
+    cout << endl << "Oh, by the way, hello, world!" << endl;
 
     p_getch();
     return 0;
