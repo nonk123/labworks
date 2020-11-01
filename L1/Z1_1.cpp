@@ -34,6 +34,7 @@ int main() {
          << "Andy, dead with a huge ass hemorrhage on his anus, with a HUGE bel"
          << "ly full of toys. [full, absolute sic. Don't even ask]" << endl;
 
+    /* And finish the task epicly. */
     cout << endl << "Oh, by the way, hello, world!" << endl;
 
     p_getch();
