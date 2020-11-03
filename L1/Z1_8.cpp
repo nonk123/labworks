@@ -8,7 +8,7 @@
 #include "portability.hpp"
 
 int main() {
-    unsigned short int expected_sum, sum, N;
+    unsigned short int E, S, N;
     long int tmp; /* in case the user _really_ wants this to break */
 
     p_fix_locale();
@@ -18,23 +18,19 @@ int main() {
         cout << "Введите число: "; cin >> tmp;
     } while (tmp <= 0 || tmp > 65535);
 
-    expected_sum = (unsigned short int) tmp;
-    sum = 0;
-    N = 0;
+    E = (unsigned short int) tmp;
 
-    /* This progression is calculated in a loop because N cannot be factored
-       out cleanly from the sum formula (resulting in n^2 + n = 2S). */
-    while (sum < expected_sum)
-        sum += ++N;
+    N = (unsigned short int) ceilf(0.5 * (sqrt(1 + 8*E) - 1.));
 
-    cout << "Сумма чисел от 1 до " << N << " равна: " << sum << endl;
+    S = N * (1 + N) / 2;
 
-    /* Notify about leftover, i.e. expected_sum is not a sum of integers from 1
-       to N. */
-    if (sum > expected_sum)
-        cout << "Что на " << sum - expected_sum << " больше введённого" << endl;
+    cout << "Сумма чисел от 1 до " << N << " равна: " << S << endl;
+
+    /* Notify about leftover, i.e. E is not a sum of integers from 1 to N. */
+    if (S > E)
+        cout << "Что на " << S - E << " больше введённой" << endl;
     else
-        cout << "Что соответствует введённому" << endl;
+        cout << "Что соответствует введённой" << endl;
 
     p_getch();
     return 0;

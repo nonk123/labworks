@@ -29,13 +29,13 @@ int main() {
     B_rad = acos((a*a + c*c - b*b) / (2.*a*c));
     /* C_rad is already known. */
 
-    S = 0.5 * a*b * sin(C_rad);
-    P = a + b + c;
-
     /* Convert to degrees because why not. */
     A_deg = A_rad * RAD_TO_DEG;
     B_deg = B_rad * RAD_TO_DEG;
     /* C_deg is already known. */
+
+    S = 0.5 * a*b * sin(C_rad);
+    P = a + b + c;
 
     /* Pretty-print the results. */
 
