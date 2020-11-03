@@ -9,7 +9,7 @@
 
 int main() {
     unsigned short int E, S, N;
-    long int tmp; /* in case the user _really_ wants this to break */
+    int tmp;
 
     p_fix_locale();
 

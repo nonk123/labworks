@@ -13,15 +13,18 @@ int main() {
 
     p_fix_locale();
 
-    cout << "Введите температуру по Фаренгейту: "; cin >> tF;
+    /* Absolute zero shouldn't be permitted. */
+    do {
+        cout << "Введите температуру по Фаренгейту: "; cin >> tF;
+    } while (tF < -459.67);
 
     /* Formula straight from the lecture. */
-    tC = (5./9.) * tF - 32.;
+    tC = (5./9.) * (tF - 32.);
 
     cout << " = " << tC << " градусов Цельсия" << endl;
 
     /* And back, to see if it's correct. */
-    tF = 9.*(tC + 32.) / 5.;
+    tF = 9.*tC / 5. + 32.;
 
     cout << " = " << tF << " градусов Фаренгейта (перевод обратно)" << endl;
 

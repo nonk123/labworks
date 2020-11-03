@@ -9,28 +9,29 @@
 #include "portability.hpp"
 
 int main() {
-    float x0, y0, x, y, g, t, V0, alpha_deg, alpha_rad;
+    float x, y, t, V0, alpha;
+
+    float x0 = 0.;
+    float y0 = 0.;
+
+    float g = -9.8;
 
     p_fix_locale();
 
     /* t = 0 is the starting point; no time travel backwards is allowed.
        Otherwise, the formula should handle any angle and velocity. */
     do {
-        cout << "Введите угол a в градусах: "; cin >> alpha_deg;
+        cout << "Введите угол a в градусах: "; cin >> alpha;
         cout << "Введите начальную скорость: "; cin >> V0;
         cout << "Введите момент времени: "; cin >> t;
-    } while (t < 0.);
+    } while (V0 <= 0. || t < 0. || alpha < 0. || alpha > 360.);
 
-    x0 = 0.;
-    y0 = 0.;
-
-    g = -9.8;
-
-    alpha_rad = alpha_deg * (M_PI / 180.);
+    /* Convert to radians. */
+    alpha *= (M_PI / 180.);
 
     /* This formula assumes there is no ground below the body. */
-    x = x0 + V0*t * cos(alpha_rad);
-    y = y0 + V0*t * sin(alpha_rad) + (g*t*t)/2.;
+    x = x0 + V0*t * cos(alpha);
+    y = y0 + V0*t * sin(alpha) - 0.5*g*t*t;
 
     if (t == 0)
         cout << "Начальные координаты: ";

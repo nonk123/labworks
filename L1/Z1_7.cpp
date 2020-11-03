@@ -14,10 +14,10 @@ int main() {
 
     /* Input loop straight from the lecture. */
     do {
-        cout << "Введите сторону a: ";     cin >> a;
-        cout << "Введите сторону b: ";     cin >> b;
+        cout << "Введите сторону a: "; cin >> a;
+        cout << "Введите сторону b: "; cin >> b;
         cout << "Введите угол С в градусах: "; cin >> C_deg;
-    } while (a <= 0. || b <= 0. || C_deg == 0.);
+    } while (a <= 0. || b <= 0. || C_deg <= 0. || C_deg >= 360.);
 
     C_rad = C_deg * DEG_TO_RAD;
 

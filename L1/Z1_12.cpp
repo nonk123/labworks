@@ -26,8 +26,7 @@ int main() {
         cout << "Введите период обращения спутника: "; cin >> T;
     } while (T <= 0.);
 
-    /* The derivation process _should_ make it to the report. */
-    h = powf((G * M * T*T) / (4. * M_PI*M_PI), 1. / 3.) - R;
+    h = powf((G * M * T*T) / (4. * M_PI*M_PI), 1./3.) - R;
 
     /* It's rotating so fast it went underground. */
     if (h < 0.)
