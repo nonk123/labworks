@@ -5,6 +5,9 @@
 *.out
 *.zip
 
+.~lock.*.*\#
+
 ltxmathml/
+
 *.odt
-*.odt\#
+*.docx
