@@ -1,7 +1,12 @@
 #+LANGUAGE: ru
 
+#+AUTHOR: Судаков С.А.
+
 # Smart quotes.
 #+OPTIONS: ':t
+
+# LaTeX formula export.
+#+OPTIONS: tex:t
 
 # Do not include title, author name, and table of contents (yet).
 #+OPTIONS: title:nil
@@ -24,7 +29,6 @@
 #+ODT_EXTRA_STYLES:   <style:text-properties style:font-name="Times New Roman"
 #+ODT_EXTRA_STYLES:                          fo:font-size="14pt"
 #+ODT_EXTRA_STYLES:                          style:line-spacing="150%"/>
-
 #+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:text-align="justify"/>
 #+ODT_EXTRA_STYLES: </style:default-style>
 #+ODT_EXTRA_STYLES: <style:style style:name="UNN" style:family="paragraph">
@@ -66,10 +70,15 @@
 #+ODT_EXTRA_STYLES: </style:style>
 
 # University year for formatting purposes.
+
 # Subtract the entrance date from the current.
 # Convert it to seconds, divide that by a year, and ceil.
 # This _should_ result in a meaningful "year" value.
+
 #+MACRO: year (eval (ceiling (/ (float (string-to-number (format-time-string "%s" (time-subtract (current-time) (date-to-time "Tue, 1 Sep 2020 00:00:00"))))) (* 60 60 24 30 12))))
+
+# Labwork number extracted from directory name with regexps.
+#+MACRO: number (eval (let ((string default-directory)) (string-match "L\\([0-9]+\\)/$" string) (match-string 1 string)))
 
 # Utilities.
 
@@ -153,7 +162,7 @@
     #+ATTR_ODT: :style "MagicTable"
     \\
     Проверил:\\
-    _к.т.н. Васин Д.Ю._
+    _доц. к.т.н. Васин Д.Ю._
     #+ATTR_ODT: :style "Subscript"
     (уч. звание, должность, ФИО)
     #+ATTR_ODT: :style "MagicTable"
@@ -172,5 +181,4 @@
 {{{pagebr}}}
 
 # TODO: page numbering is still manual. The A1 of the second table has
-# to have bottom alignment, but it doesn't. x1.5 line spacing is
-# required.
+# to have bottom alignment, but it doesn't.
