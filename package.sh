@@ -26,6 +26,11 @@ rm -f "$LAB.zip"
 mkdir -p "$TMP"
 
 for task in $LAB/*; do
+    # Include the report in the archive.
+    if [[ "$task" = */report.odt ]]; then
+        cp "$task" "$TMP/report.odt"
+    fi
+
     # Skip stuff that isn't solutions.
     [[ "$task" != */Z*.cpp ]] && continue
 
@@ -49,7 +54,7 @@ for task in $LAB/*; do
     sed -i "s/##task##/${task#*_}/g" "$PROJECT"
 done
 
-# Workaround for excluding the parent directory, =tmp=.
+# Workaround for excluding the parent directory, tmp.
 cd tmp
 zip -r ar.zip "$LAB"
 cd ..
