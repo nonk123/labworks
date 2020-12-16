@@ -21,14 +21,16 @@
 
 # Hopefully the right page style.
 
-#+ODT_EXTRA_AUTOMATIC_STYLES: <style:page-layout style:name="Mpm1">
+#+ODT_EXTRA_AUTOMATIC_STYLES: <style:page-layout style:name="Mpm1"
+#+ODT_EXTRA_AUTOMATIC_STYLES:                    style:page-usage="left">
 #+ODT_EXTRA_AUTOMATIC_STYLES:   <style:page-layout-properties
 #+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-left="2.499cm"
 #+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-right="1cm"
 #+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-top="1cm"
 #+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-bottom="1cm"/>
 #+ODT_EXTRA_AUTOMATIC_STYLES: </style:page-layout>
-#+ODT_EXTRA_AUTOMATIC_STYLES: <style:page-layout style:name="Mpm2">
+#+ODT_EXTRA_AUTOMATIC_STYLES: <style:page-layout style:name="Mpm2"
+#+ODT_EXTRA_AUTOMATIC_STYLES:                    style:page-usage="left">
 #+ODT_EXTRA_AUTOMATIC_STYLES:   <style:page-layout-properties
 #+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-left="2.499cm"
 #+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-right="1.499cm"
@@ -49,7 +51,8 @@
 #+ODT_MASTER_STYLES:   </style:footer>
 #+ODT_MASTER_STYLES: </style:master-page>
 #+ODT_MASTER_STYLES: <style:master-page style:name="OrgPage"
-#+ODT_MASTER_STYLES:                    style:page-layout-name="Mpm1">
+#+ODT_MASTER_STYLES:                    style:page-layout-name="Mpm1"
+#+ODT_MASTER_STYLES:                    style:next-style-name="OrgPage">
 #+ODT_MASTER_STYLES:   <style:header>
 #+ODT_MASTER_STYLES:     <text:p text:style-name="PageNumber">
 #+ODT_MASTER_STYLES:       <text:page-number
@@ -134,7 +137,7 @@
 #+MACRO: year (eval (ceiling (/ (float (string-to-number (format-time-string "%s" (time-subtract (current-time) (date-to-time "Tue, 1 Sep 2020 00:00:00"))))) (* 60 60 24 30 12))))
 
 # Labwork number extracted from directory name.
-#+MACRO: number (eval (let ((string default-directory)) (string-match "L\\([0-9]+\\)/$" string) (match-string 1 string)))
+#+MACRO: number (eval (let ((string default-directory)) (string-match "L\\([0-9]+\\(?:\\.[0-9]+\\)*\\)/$" string) (match-string 1 string)))
 
 #+ODT_EXTRA_STYLES: <style:style style:name="PageBreak" style:family="paragraph">
 #+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:break-before="page"/>
@@ -154,7 +157,7 @@
 # Updated manually because `sh` blocks aren't safe/portable.
 
 # The latest output of `uname -s -r -p`.
-#+MACRO: kernel Linux 5.4.0-56-generic x86_64
+#+MACRO: kernel Linux 5.4.0-56-generic x86\under{}64
 
 # CPU, GPU, and RAM info.
 #+MACRO: cpu Pentium® Dual-Core CPU T4500 @ 2.30GHz
