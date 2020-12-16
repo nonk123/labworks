@@ -14,28 +14,30 @@
 # $1 - labwork to package.
 
 LAB=$1
+LAB_NUMBER=${LAB#L}
 
 if [[ -z "$LAB" ]]; then
     echo 'Supply argument $1'
     exit 1
 fi
 
-TMP=tmp/$LAB/
+# Directory with the file structure of the archive.
+OUTPUT_DIR=tmp/$LAB/
 
 rm -f "$LAB.zip"
-mkdir -p "$TMP"
+mkdir -p "$OUTPUT_DIR"
 
 for task in $LAB/*; do
     # Include the report in the archive.
-    if [[ "$task" = */report.odt ]]; then
-        cp "$task" "$TMP/report.odt"
+    if [[ "$task" = */report.doc ]]; then
+        cp "$task" "$OUTPUT_DIR/Отчёт по работе №${LAB_NUMBER}.doc"
     fi
 
     # Skip stuff that isn't solutions.
     [[ "$task" != */Z*.cpp ]] && continue
 
     task=${task##*/}
-    TASK_DIR=$TMP/${task%*.cpp}/
+    task_dir=$OUTPUT_DIR/${task%*.cpp}/
 
     mkdir -p "$TASK_DIR"
 
@@ -46,12 +48,13 @@ for task in $LAB/*; do
     # Extension is no longer needed.
     task=${task%.cpp}
 
-    # Generate the project file by substituting ## values in the template.
-    PROJECT=$TASK_DIR/$task.dev
-    cp template.dev "$PROJECT"
+    # Generate the project file by substituting ##var## in the template.
 
-    sed -i "s/##lab##/${LAB#L}/g" "$PROJECT"
-    sed -i "s/##task##/${task#*_}/g" "$PROJECT"
+    project=$task_dir/$task.dev
+    cp template.dev "$project"
+
+    sed -i "s/##lab##/${LAB_NUMBER}/g" "$project"
+    sed -i "s/##task##/${task#*_}/g" "$project"
 done
 
 # Workaround for excluding the parent directory, tmp.
