@@ -1,3 +1,5 @@
+# The (un)epic title page thing, the bane of my existence.
+
 #+LANGUAGE: ru
 
 #+AUTHOR: Судаков С.А.
@@ -6,90 +8,162 @@
 #+OPTIONS: ':t
 
 # LaTeX formula export.
-#+OPTIONS: tex:t
+#+OPTIONS: tex:dvipng
 
-# Do not include title, author name, and table of contents (yet).
-#+OPTIONS: title:nil
-#+OPTIONS: author:nil
-#+OPTIONS: toc:nil
+# Styled headers up to the 3rd level.
+#+OPTIONS: H:3
 
-# Custom styles. Requires the ox-odt fork.
+# Do not include title, author name, and table of contents.
+# They are handled separately.
+#+OPTIONS: title:nil author:nil toc:nil
+
+# Custom styles. This feature requires the ox-odt fork.
 
 # Hopefully the right page style.
+
 #+ODT_EXTRA_AUTOMATIC_STYLES: <style:page-layout style:name="Mpm1">
 #+ODT_EXTRA_AUTOMATIC_STYLES:   <style:page-layout-properties
-#+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-left="2.5cm"
+#+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-left="2.499cm"
 #+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-right="1cm"
 #+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-top="1cm"
 #+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-bottom="1cm"/>
 #+ODT_EXTRA_AUTOMATIC_STYLES: </style:page-layout>
+#+ODT_EXTRA_AUTOMATIC_STYLES: <style:page-layout style:name="Mpm2">
+#+ODT_EXTRA_AUTOMATIC_STYLES:   <style:page-layout-properties
+#+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-left="2.499cm"
+#+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-right="1.499cm"
+#+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-top="1.199cm"
+#+ODT_EXTRA_AUTOMATIC_STYLES:     fo:margin-bottom="1.799cm"/>
+#+ODT_EXTRA_AUTOMATIC_STYLES: </style:page-layout>
 
-# Text styles.
+# Page styles don't transfer after .doc export, so the standard style
+# becomes the title page style, and the normal page style follows it.
+#+ODT_MASTER_STYLES: <style:master-page style:name="Standard"
+#+ODT_MASTER_STYLES:                    style:page-layout-name="Mpm2"
+#+ODT_MASTER_STYLES:                    style:next-style-name="OrgPage">
+#+ODT_MASTER_STYLES:   <style:header>
+#+ODT_MASTER_STYLES:     <text:p text:style-name="Header"/>
+#+ODT_MASTER_STYLES:   </style:header>
+#+ODT_MASTER_STYLES:   <style:footer>
+#+ODT_MASTER_STYLES:     <text:p text:style-name="Footer"/>
+#+ODT_MASTER_STYLES:   </style:footer>
+#+ODT_MASTER_STYLES: </style:master-page>
+#+ODT_MASTER_STYLES: <style:master-page style:name="OrgPage"
+#+ODT_MASTER_STYLES:                    style:page-layout-name="Mpm1">
+#+ODT_MASTER_STYLES:   <style:header>
+#+ODT_MASTER_STYLES:     <text:p text:style-name="PageNumber">
+#+ODT_MASTER_STYLES:       <text:page-number
+#+ODT_MASTER_STYLES:         text:select-page="current"
+#+ODT_MASTER_STYLES:         text:page-adjust="-1"/>
+#+ODT_MASTER_STYLES:     </text:p>
+#+ODT_MASTER_STYLES:   </style:header>
+#+ODT_MASTER_STYLES:   <style:footer>
+#+ODT_MASTER_STYLES:     <text:p text:style-name="Footer"/>
+#+ODT_MASTER_STYLES:   </style:footer>
+#+ODT_MASTER_STYLES: </style:master-page>
+
 #+ODT_EXTRA_STYLES: <style:default-style style:family="paragraph">
-#+ODT_EXTRA_STYLES:   <style:text-properties style:font-name="Times New Roman"
-#+ODT_EXTRA_STYLES:                          fo:font-size="14pt"
-#+ODT_EXTRA_STYLES:                          style:line-spacing="150%"/>
-#+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:text-align="justify"/>
+#+ODT_EXTRA_STYLES:   <style:text-properties
+#+ODT_EXTRA_STYLES:    style:font-name="Times New Roman"
+#+ODT_EXTRA_STYLES:    fo:font-size="14pt"/>
+#+ODT_EXTRA_STYLES:   <style:paragraph-properties
+#+ODT_EXTRA_STYLES:     fo:text-align="justify"
+#+ODT_EXTRA_STYLES:     fo:line-height="150%"/>
 #+ODT_EXTRA_STYLES: </style:default-style>
 #+ODT_EXTRA_STYLES: <style:style style:name="UNN" style:family="paragraph">
-#+ODT_EXTRA_STYLES:   <style:text-properties fo:font-size="12pt"
-#+ODT_EXTRA_STYLES:                          fo:font-weight="bold"/>
-#+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:text-align="center"/>
+#+ODT_EXTRA_STYLES:   <style:text-properties
+#+ODT_EXTRA_STYLES:     fo:font-size="12pt"
+#+ODT_EXTRA_STYLES:     fo:font-weight="bold"/>
+#+ODT_EXTRA_STYLES:   <style:paragraph-properties
+#+ODT_EXTRA_STYLES:     fo:text-align="center"
+#+ODT_EXTRA_STYLES:     fo:line-height="100%"/>
 #+ODT_EXTRA_STYLES: </style:style>
 #+ODT_EXTRA_STYLES: <style:style style:name="UNN_top" style:family="paragraph">
-#+ODT_EXTRA_STYLES:   <style:text-properties fo:font-size="11pt"
-#+ODT_EXTRA_STYLES:                          fo:font-weight="bold"/>
-#+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:text-align="center"/>
+#+ODT_EXTRA_STYLES:   <style:text-properties
+#+ODT_EXTRA_STYLES:     fo:font-size="11pt"
+#+ODT_EXTRA_STYLES:     fo:font-weight="bold"/>
+#+ODT_EXTRA_STYLES:   <style:paragraph-properties
+#+ODT_EXTRA_STYLES:     fo:text-align="center"
+#+ODT_EXTRA_STYLES:     fo:line-height="100%"/>
 #+ODT_EXTRA_STYLES: </style:style>
 #+ODT_EXTRA_STYLES: <style:style style:name="TitlePage" style:family="paragraph">
 #+ODT_EXTRA_STYLES:   <style:text-properties fo:font-size="14pt"/>
-#+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:text-align="center"
-#+ODT_EXTRA_STYLES:                               fo:margin-bottom="0.18cm"/>
+#+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:text-align="center"/>
+#+ODT_EXTRA_STYLES: </style:style>
+#+ODT_EXTRA_STYLES: <style:style style:name="Newline14" style:family="paragraph">
+#+ODT_EXTRA_STYLES:   <style:text-properties fo:font-size="14pt"/>
+#+ODT_EXTRA_STYLES:   <style:paragraph-properties
+#+ODT_EXTRA_STYLES:     fo:text-align="center"
+#+ODT_EXTRA_STYLES:     fo:line-height="100%"/>
 #+ODT_EXTRA_STYLES: </style:style>
 #+ODT_EXTRA_STYLES: <style:style style:name="LabTitle" style:family="paragraph">
 #+ODT_EXTRA_STYLES:   <style:text-properties fo:font-size="16pt"/>
-#+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:text-align="center"/>
+#+ODT_EXTRA_STYLES:   <style:paragraph-properties
+#+ODT_EXTRA_STYLES:     fo:text-align="center"
+#+ODT_EXTRA_STYLES:     fo:line-height="100%"/>
 #+ODT_EXTRA_STYLES: </style:style>
-#+ODT_EXTRA_STYLES: <style:style style:name="MagicTable" style:family="paragraph">
+#+ODT_EXTRA_STYLES: <style:style style:name="FooterTable" style:family="paragraph">
 #+ODT_EXTRA_STYLES:   <style:text-properties fo:font-size="12pt"/>
-#+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:text-align="left"/>
+#+ODT_EXTRA_STYLES:   <style:paragraph-properties
+#+ODT_EXTRA_STYLES:     fo:text-align="left"
+#+ODT_EXTRA_STYLES:     fo:line-height="100%"/>
 #+ODT_EXTRA_STYLES: </style:style>
 #+ODT_EXTRA_STYLES: <style:style style:name="Subscript" style:family="paragraph">
 #+ODT_EXTRA_STYLES:   <style:text-properties fo:font-size="8pt"/>
-#+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:text-align="left"/>
-#+ODT_EXTRA_STYLES: </style:style>
-#+ODT_EXTRA_STYLES: <style:style style:name="PageBreak" style:family="paragraph">
-#+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:break-before="page"/>
+#+ODT_EXTRA_STYLES:   <style:paragraph-properties
+#+ODT_EXTRA_STYLES:     fo:text-align="left"
+#+ODT_EXTRA_STYLES:     fo:line-height="100%"/>
 #+ODT_EXTRA_STYLES: </style:style>
 #+ODT_EXTRA_STYLES: <style:style style:name="Selo" style:family="paragraph">
 #+ODT_EXTRA_STYLES:   <style:text-properties fo:font-size="12pt"/>
-#+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:text-align="right"/>
+#+ODT_EXTRA_STYLES:   <style:paragraph-properties
+#+ODT_EXTRA_STYLES:     fo:text-align="right"
+#+ODT_EXTRA_STYLES:     fo:line-height="100%"/>
+#+ODT_EXTRA_STYLES: </style:style>
+#+ODT_EXTRA_STYLES: <style:style style:name="PageNumber" style:family="paragraph">
+#+ODT_EXTRA_STYLES:   <style:text-properties fo:font-size="12pt"/>
+#+ODT_EXTRA_STYLES:   <style:paragraph-properties
+#+ODT_EXTRA_STYLES:     fo:text-align="right"
+#+ODT_EXTRA_STYLES:     fo:line-height="100%"/>
+#+ODT_EXTRA_STYLES: </style:style>
+
+# University year for formatting purposes.
+# Basically, it's the ceiled amount of years since September, 2020.
+# The time between September, 2020, and the current date is converted to
+# seconds and divided by a year.
+#+MACRO: year (eval (ceiling (/ (float (string-to-number (format-time-string "%s" (time-subtract (current-time) (date-to-time "Tue, 1 Sep 2020 00:00:00"))))) (* 60 60 24 30 12))))
+
+# Labwork number extracted from directory name.
+#+MACRO: number (eval (let ((string default-directory)) (string-match "L\\([0-9]+\\)/$" string) (match-string 1 string)))
+
+#+ODT_EXTRA_STYLES: <style:style style:name="PageBreak" style:family="paragraph">
+#+ODT_EXTRA_STYLES:   <style:paragraph-properties fo:break-before="page"/>
 #+ODT_EXTRA_STYLES: </style:style>
 #+ODT_EXTRA_STYLES: <style:style style:name="Epic18" style:family="paragraph">
 #+ODT_EXTRA_STYLES:   <style:text-properties fo:font-size="18pt"/>
 #+ODT_EXTRA_STYLES: </style:style>
 
-# University year for formatting purposes.
-
-# Subtract the entrance date from the current.
-# Convert it to seconds, divide that by a year, and ceil.
-# This _should_ result in a meaningful "year" value.
-
-#+MACRO: year (eval (ceiling (/ (float (string-to-number (format-time-string "%s" (time-subtract (current-time) (date-to-time "Tue, 1 Sep 2020 00:00:00"))))) (* 60 60 24 30 12))))
-
-# Labwork number extracted from directory name with regexps.
-#+MACRO: number (eval (let ((string default-directory)) (string-match "L\\([0-9]+\\)/$" string) (match-string 1 string)))
-
-# Utilities.
-
-# Insert a page break.
+# Insert different breaks.
 #+MACRO: pagebr #+ODT: <text:p text:style-name="PageBreak"/>
-
-# They really abused those in the OG file.
 #+MACRO: newline12 #+ODT: <text:p text:style-name="UNN"/>
-#+MACRO: newline14 #+ODT: <text:p text:style-name="TitlePage"/>
+#+MACRO: newline14 #+ODT: <text:p text:style-name="Newline14"/>
 #+MACRO: newline16 #+ODT: <text:p text:style-name="LabTitle"/>
 #+MACRO: newline18 #+ODT: <text:p text:style-name="Epic18"/>
+
+# Random system info.
+# Updated manually because `sh` blocks aren't safe/portable.
+
+# The latest output of `uname -s -r -p`.
+#+MACRO: kernel Linux 5.4.0-56-generic x86_64
+
+# CPU, GPU, and RAM info.
+#+MACRO: cpu Pentium® Dual-Core CPU T4500 @ 2.30GHz
+#+MACRO: ram 800 MHz, 2 GB (2x1024 MB)
+#+MACRO: gpu Mobility Radeon HD 4530/4570/545v
+
+#+MACRO: compiler g++ 9.3.0
+
+#+MACRO: misc Подключена клавиатура и мышь
 
 # The juice.
 
@@ -113,12 +187,13 @@
 {{{newline14}}}
 {{{newline14}}}
 {{{newline14}}}
+{{{newline14}}}
 
 #+ATTR_ODT: :style "TitlePage"
 Направление подготовки
 
 #+ATTR_ODT: :style "TitlePage"
-«Прикладная информатика»
+"Прикладная информатика"
 
 {{{newline14}}}
 {{{newline16}}}
@@ -141,7 +216,7 @@
 -
   -
   -
-    #+ATTR_ODT: :style "MagicTable"
+    #+ATTR_ODT: :style "FooterTable"
     \\
     Выполнил студент {{{year}}} курса\\
     очной формы обучения\\
@@ -152,22 +227,21 @@
 
 #+ATTR_ODT: :rel-width 100
 #+ATTR_ODT: :list-table t
-#+ATTR_ODT: :style "MagicTable"
+#+ATTR_ODT: :style "FooterTable"
 -
   -
     #+ATTR_ODT: :style "Selo"
     г. Павлово\\
     {{{time(%Y)}}}
   -
-    #+ATTR_ODT: :style "MagicTable"
+    #+ATTR_ODT: :style "FooterTable"
     \\
     Проверил:\\
     _доц. к.т.н. Васин Д.Ю._
     #+ATTR_ODT: :style "Subscript"
     (уч. звание, должность, ФИО)
-    #+ATTR_ODT: :style "MagicTable"
-    \\
-    \\
+    # They had exactly this many newlines in the original document.
+    #+ATTR_ODT: :style "FooterTable"
     \\
     \\
     \\
@@ -179,6 +253,3 @@
     \\
 
 {{{pagebr}}}
-
-# TODO: page numbering is still manual. The A1 of the second table has
-# to have bottom alignment, but it doesn't.
