@@ -9,7 +9,7 @@ int main() {
 
     int month, day, days_this_month, total_days;
     int days_per_month[]
-        /* JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC*/
+        /* JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC */
         = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
     do {

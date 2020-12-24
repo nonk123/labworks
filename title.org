@@ -55,9 +55,7 @@
 #+ODT_MASTER_STYLES:                    style:next-style-name="OrgPage">
 #+ODT_MASTER_STYLES:   <style:header>
 #+ODT_MASTER_STYLES:     <text:p text:style-name="PageNumber">
-#+ODT_MASTER_STYLES:       <text:page-number
-#+ODT_MASTER_STYLES:         text:select-page="current"
-#+ODT_MASTER_STYLES:         text:page-adjust="-1"/>
+#+ODT_MASTER_STYLES:       <text:page-number text:select-page="current"/>
 #+ODT_MASTER_STYLES:     </text:p>
 #+ODT_MASTER_STYLES:   </style:header>
 #+ODT_MASTER_STYLES:   <style:footer>
@@ -167,6 +165,8 @@
 #+MACRO: compiler g++ 9.3.0
 
 #+MACRO: misc Подключена клавиатура и мышь
+
+#+MACRO: specs #+INCLUDE: specs.org
 
 # The juice.
 
