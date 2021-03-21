@@ -1,0 +1,8 @@
+* legacy
+
+I've switched back to Windows a while ago. Here are some reasons why the
+entire repository has to be deprecated:
+
+- [[portability.hpp]] is no longer required.
+- Exporting .org files is hell.
+- The scripts would only work under Linux.
