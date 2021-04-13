@@ -3,15 +3,5 @@
 .\#*
 *~
 
-*.out
-L*.zip
-
-# LibreOffice lockfiles.
-.~lock.*.*\#
-
-ltxmathml/
-ltxpng/
-
-*.odt
-*.doc
-*.docx
+*.obj
+*.exe
