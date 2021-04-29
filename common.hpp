@@ -20,6 +20,9 @@
 #define random(X) (rand () % (X))
 #endif /* random */
 
+/* Using getch() instead of _getch() produces a lot of warnings. */
+#define getch _getch
+
 inline void
 fix_locale ()
 {
